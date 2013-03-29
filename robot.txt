@@ -1,0 +1,5 @@
+User-agent: *
+
+Disallow: /imag_deb/
+
+Sitemap: http://transgarant100.ru/sitemap.xml
