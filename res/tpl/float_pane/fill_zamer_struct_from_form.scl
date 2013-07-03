@@ -1,0 +1,76 @@
+/*
+ * fill_zamer_struct_from_form.scl
+ * 
+ * Copyright 2012 Жлобенцев Владимир <dnclive@gmail.com>
+ * 
+ * Заполнение структуры запроса данными из формы
+ * 
+ */
+
+/* id */
+f:struct_rel^place_from:form.zamer.id&place_to:{{f:show_val^context_struct_key&key:context_struct_key&def_val:heap}}.tab_zamer.0.id&replace:true>
+
+/* подразделение */
+f:struct_rel^place_from:form.zamer.org_unit&place_to:{{f:show_val^context_struct_key&key:context_struct_key&def_val:heap}}.tab_zamer.0.tab_org_unit.0.name&replace:true>
+
+/* офис продаж */
+f:struct_rel^place_from:form.zamer.sale_office&place_to:{{f:show_val^context_struct_key&key:context_struct_key&def_val:heap}}.tab_zamer.0.tab_sale_office.0.name&replace:true>
+
+/* дата поступления замера */
+f:struct_rel^place_from:form.zamer.dt_make&place_to:{{f:show_val^context_struct_key&key:context_struct_key&def_val:heap}}.tab_zamer.0.dt_make&replace:true>
+
+/* дата выполнения замера */
+f:struct_rel^place_from:form.zamer.dt_zamer&place_to:{{f:show_val^context_struct_key&key:context_struct_key&def_val:heap}}.tab_zamer.0.dt_zamer&replace:true>
+
+/* период выполнения замера */
+f:struct_rel^place_from:form.zamer.time_period_zamer&place_to:{{f:show_val^context_struct_key&key:context_struct_key&def_val:heap}}.tab_zamer.0.time_period_zamer&replace:true>
+
+/* дата поступления результата замера */
+f:struct_rel^place_from:form.zamer.dt_result&place_to:{{f:show_val^context_struct_key&key:context_struct_key&def_val:heap}}.tab_zamer.0.dt_result&replace:true>
+
+/*** заполнение адреса ***/
+/* город */
+f:struct_rel^place_from:form.zamer.city&place_to:{{f:show_val^context_struct_key&key:context_struct_key&def_val:heap}}.tab_zamer.0.tab_address.0.tab_city.0.name&replace:true>
+
+/* адрес */
+f:struct_rel^place_from:form.zamer.address&place_to:{{f:show_val^context_struct_key&key:context_struct_key&def_val:heap}}.tab_zamer.0.tab_address.0.name&replace:true>
+
+/* район города */
+f:struct_rel^place_from:form.zamer.city_area&place_to:{{f:show_val^context_struct_key&key:context_struct_key&def_val:heap}}.tab_zamer.0.tab_address.0.tab_area.0.name&replace:true>
+
+/*
+f:struct_rel^place_from:form.zamer.street_name&place_to:{{f:show_val^context_struct_key&key:context_struct_key&def_val:heap}}.tab_zamer.0.tab_address.0.tab_street.0.name&replace:true>
+*/
+
+/*** клиент ***/
+/* имя клиента */
+f:struct_rel^place_from:form.zamer.customer_name&place_to:{{f:show_val^context_struct_key&key:context_struct_key&def_val:heap}}.tab_zamer.0.tab_customer.0.name&replace:true>
+
+/* телефон */
+f:struct_rel^place_from:form.zamer.customer_phone&place_to:{{f:show_val^context_struct_key&key:context_struct_key&def_val:heap}}.tab_zamer.0.tab_customer.0.phone&replace:true>
+
+/*** задейвствованный персонал ***/
+/* менеджер */
+f:struct_rel^place_from:form.zamer.manager_name&place_to:{{f:show_val^context_struct_key&key:context_struct_key&def_val:heap}}.tab_zamer.0.tab_concerned_people.0.tab_people.0.name&replace:true>
+
+/* технолог */
+f:struct_rel^place_from:form.zamer.tech_name&place_to:{{f:show_val^context_struct_key&key:context_struct_key&def_val:heap}}.tab_zamer.0.tab_concerned_people.1.tab_people.0.name&replace:true>
+
+/* комментарий */
+f:struct_rel^place_from:form.zamer.comment&place_to:{{f:show_val^context_struct_key&key:context_struct_key&def_val:heap}}.tab_zamer.0.comment&replace:true>
+
+/*** состав заказа ***/
+f:struct_rel^place_from:form.zamer.count_ok&place_to:{{f:show_val^context_struct_key&key:context_struct_key&def_val:heap}}.tab_zamer.0.count_ok&replace:true>
+
+f:struct_rel^place_from:form.zamer.count_bdv&place_to:{{f:show_val^context_struct_key&key:context_struct_key&def_val:heap}}.tab_zamer.0.count_bdv&replace:true>
+
+f:struct_rel^place_from:form.zamer.count_dv&place_to:{{f:show_val^context_struct_key&key:context_struct_key&def_val:heap}}.tab_zamer.0.count_dv&replace:true>
+
+f:struct_rel^place_from:form.zamer.count_bal&place_to:{{f:show_val^context_struct_key&key:context_struct_key&def_val:heap}}.tab_zamer.0.count_bal&replace:true>
+
+f:struct_rel^place_from:form.zamer.count_lodj&place_to:{{f:show_val^context_struct_key&key:context_struct_key&def_val:heap}}.tab_zamer.0.count_lodj&replace:true>
+
+f:struct_rel^place_from:form.zamer.count_dop&place_to:{{f:show_val^context_struct_key&key:context_struct_key&def_val:heap}}.tab_zamer.0.count_dop&replace:true>
+
+f:struct_rel^place_from:form.zamer.count_other&place_to:{{f:show_val^context_struct_key&key:context_struct_key&def_val:heap}}.tab_zamer.0.count_other&replace:true>
+

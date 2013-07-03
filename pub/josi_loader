@@ -1,0 +1,131 @@
+<!--
+        imag3
+        
+        Copyright 2012 Жлобенцев Владимир <dnclive@gmail.com>
+        
+        Шаблон верхнего уровня интернет магазина imag3
+        
+-->
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//RU"
+	"http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="ru" lang="ru">
+
+<head>
+	<title>[[f:struct_val^key:service_conf.title]]</title>
+	<meta http-equiv="content-type" content="text/html;charset=utf-8" />
+	<meta name="generator" content="Geany 0.20" />
+	
+	<!--стили-->
+	<link rel="stylesheet" type="text/css" href="res/tpl/main.css"/>
+	<link rel="stylesheet" type="text/css" href="res/tpl/josi.css"/>
+	<link rel="stylesheet" type="text/css" href="res/tpl/waiter/waiter.css"/>
+	<!--link rel="stylesheet" type="text/css" href="res/tpl/css.css"/-->
+	<link rel="stylesheet" type="text/css" href="res/tpl/aquaon/css.css"/>
+	
+	<!--framework-->
+	<!--link rel="stylesheet" type="text/css" href="../release/dijit/themes/claro/claro.css"-->
+	<link rel="stylesheet" type="text/css" href="../jquery/css/ui-lightness/jquery-ui-1.8.18.custom.css"/>
+	
+	<!--javasctipt-->
+
+	<!--google analistics-->	
+	{{f:tpl^page_path:res/tpl/aquaon/google_analistics_code.tpl}}
+	
+	<!--yandex metric-->	
+	{{f:tpl^page_path:res/tpl/aquaon/yandex_metric_code_.tpl}}
+	
+	<!--DoJo-->
+	<script src="res/conf/dojo_config.js"></script>
+	
+	<!--продуктивный билд-->
+	<!--script src="res/josi/js/dojo/release/dojo/dojo/dojo.js"></script>
+	
+	<!--отладочный-->
+	<script src="res/josi/js/dojo/dev/dojo/dojo.js"></script>
+	
+	<!--jquery кеширование скриптов 
+	<script src="../jquery/jquery-1.7.2.min.js"></script>
+	<script src="../jquery/js/jquery-ui-1.8.20.custom.min.js"></script>
+	<script src="../jquery/development-bundle/ui/i18n/jquery.ui.datepicker-ru.js"></script>-->
+	
+	<!--скрипт выполняющий запуск сервиса-->
+	<script>
+		require(
+		//["tlib/tlib"],
+		[],
+		function(t_lib)
+		{
+			require(
+			[	
+				"tlib/tjosi",
+				"tlib/tres",
+			],
+			function(t_josi, t_res)
+			{
+				
+				//josi_conf.js
+				{{f:tpl^tpl_path:res/conf/josi_conf.js}}
+
+				//инициализация josi, запуск очереди задач
+				t_josi.f_cre({config:config});
+
+				//сохраняем service_conf из josi_conf.js в структуру локальных ресурсов
+				t_res.f_struct_res_arr_set(
+				{
+					key:"service_conf",
+					val:service_conf,
+				})
+
+				//излучение события load
+				t_josi.f_ev_load_emit();
+			
+				return;
+			});
+		});
+	
+	</script>
+
+</head>
+
+<body 	class="body claro body_stl_smpl" 
+		data-josi-kvl-str="
+		f:waiter_show>
+		
+		<!--новый правильный лоадер выключен пока не реализован механизм 
+		{{f:tpl^page_path:loader.scl&service:{{f:show_val^service&key:service}}&k:v}}-->
+
+		{{f:tpl^page_path:loader.scl&service:res/tpl/imag/main.tpl}}
+
+		f:waiter_hide"
+		data-josi-ev-resp="load">
+	
+	<!--окно для вывода отладочной информации-->
+	<textarea class="trans_resp hidden">
+	
+	</textarea>
+	
+	<!--основной контент страницы-->
+	<div class="service_div content" style="height:100%">
+		{{f:tpl^page_path:res/tpl/imag/form.tpl}}
+	</div>
+	
+	<!--какой то мусор-->
+	<div class="hidden">
+				<input 	class="josi_form_input_div_stl_smpl" type="text" name="date1" id="time1" value="T15:00:00"
+					data-dojo-type_="dijit.form.TimeTextBox"
+					onChange="dojo.byId('val').value=arguments[0].toString().replace(/.*1970\s(\S+).*/,'T$1')"
+					required="true" />
+	</div>
+	
+	
+	{{f:tpl^page_path:res/tpl/form/popup/form.tpl}}
+
+	{{f:tpl^page_path:res/tpl/waiter.tpl}}
+	
+	{{f:tpl^page_path:res/tpl/city_selector/form.tpl}}
+	
+	{{f:tpl^page_path:res/tpl/other_browser.tpl}}
+</body>
+
+</html>

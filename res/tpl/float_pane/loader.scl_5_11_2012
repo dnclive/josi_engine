@@ -1,0 +1,33 @@
+/*
+ * loader.scl
+ * 
+ * Copyright 2012 Жлобенцев Владимир <dnclive@gmail.com>
+ * 
+ * Пследовательность команд загрузки сервиса Замеры
+ * 
+ */
+
+<!-- Загружаем шаблон формы сервиса -->
+f:tpl^tpl_path:tpl/zamer/form.tpl&node_class_query:.content_div&parse_arr:false&replace:true&rooted:false&append:false&struct_res_key:struct_put_arr.zamer.tab_org_unit.0>
+
+<!-- Загружаем шаблон формы сервиса -->
+f:item_list_alt^item_class_query:.josi_list_item&alt_class:josi_list_item_1_alt_stl_smpl>
+
+<!-- Парсим колендари -->
+f:build_jquery_datepicker^class_query:.jquery_datepicker>
+
+<!-- Загружаем запрос замеров -->
+f:res_struct_req^req_res_name:res/struct_get_query_arr/zamer/tab_zamer&place_from:tab_zamer&place_to:struct_get_query_arr.zamer.tab_zamer&replace:true>
+
+<!-- Выполняем запрос -->
+f:josi_store_trans^place_to:struct_get_arr.zamer.tab_zamer&get_dot_key:struct_get_query_arr.zamer.tab_zamer&replace:true>
+
+<!-- Парсим полученные замеры -->
+f:tpl^tpl_res_key:&tpl_path:tpl/zamer/list/item.tpl&node_class_query:.js_form_main_list&struct_res_key:struct_get_arr.zamer.tab_zamer&replace:true&append:false>
+
+<!-- Помечаем четные нечетные строки -->
+f:item_list_alt^item_class_query:.josi_store_item_div&alt_class:order_item_div_alt>
+
+<!--Запуск периодического обновления количества оставшихся замеров-->
+freq:5000&lim:0^f:tpl^tpl_res_key:&tpl_path:tpl/zamer/zamer_count.tpl&node_class_query:.zamer_count&rooted:false&replace:true&append:false&parse_arr:false>
+

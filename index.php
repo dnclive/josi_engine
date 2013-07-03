@@ -6,7 +6,7 @@
  *      
  */
 
-redirect("https://localhost/webproj/git/dnclive/transgarant/pub/index_2.html");
+redirect("https://localhost/webproj/git/dnclive/josi_engine/pub/index.php");
 
 function redirect($location)
 {
